@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
@@ -7,6 +8,8 @@ import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import apiRouter from './routes/apiRouter';
 import resLocals from './middlewares/resLocals';
+import apiAuthRouter from './routes/api/apiAuthRouter';
+import cookieParser from 'cookie-parser';
 
 require('dotenv').config();
 
@@ -31,6 +34,7 @@ app.set('view engine', 'jsx');
 app.set('views', path.join(__dirname, 'components'));
 
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,5 +43,6 @@ app.use(resLocals);
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.use('/api/auth', apiAuthRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
