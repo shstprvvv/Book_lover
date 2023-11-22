@@ -8,14 +8,16 @@ const apiAuthRouter = express.Router();
 
 apiAuthRouter.post('/signup', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name, email, password, phone,
+    } = req.body;
     if (!email || !name || !password) {
       return res.status(400).json({ message: 'All fields must be non-empty' });
     }
 
     const [newUser, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name, hashpass: await bcrypt.hash(password, 10) },
+      defaults: { name, hashpass: await bcrypt.hash(password, 10), phone },
     });
     if (!created) return res.status(403).json({ message: 'This email already exists' });
 
