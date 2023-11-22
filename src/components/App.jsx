@@ -8,12 +8,12 @@ import AccountPage from './page/AccountPage';
 import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
-export default function App() {
+export default function App({ books }) {
   return (
     <div className="container">
       <Header />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage books={books} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account" element={<AccountPage />} />
@@ -21,7 +21,5 @@ export default function App() {
         <Route path="/bookpage" element={<BookPage />} />
       </Routes>
     </div>
-  )
-
-
+  );
 }
