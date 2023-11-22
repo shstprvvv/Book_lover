@@ -11,8 +11,7 @@ router.post('/addbook', async (req, res) => {
   await Book.create(req.body);
   // await book.create(req.body);
   // res.redirect('/');
-  res.sendStatus( 200 )
+  res.sendStatus(200);
 });
-
 
 export default router;
