@@ -1,9 +1,12 @@
 import express from 'express';
+import { Book } from '../../db/models';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('Layout');
+router.get('/', async (req, res) => {
+  const books = await Book.findAll();
+  const initState = { books };
+  res.render('Layout', initState);
 });
 
 router.get('/signup', (req, res) => {
@@ -25,6 +28,5 @@ router.get('/addbook', (req, res) => {
 router.get('/bookpage', (req, res) => {
   res.render('Layout');
 });
-
 
 export default router;

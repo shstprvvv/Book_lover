@@ -25,11 +25,11 @@ function AddBook() {
 
     try {
       const formDataToSend = {};
-      formDataToSend.nameBook =  formData.nameBook
-      formDataToSend.writer =  formData.writer
-      formDataToSend.img =  formData.img
-      formDataToSend.user_id =  1
-      formDataToSend.owner_comment =  formData.owner_comment
+      formDataToSend.nameBook = formData.nameBook;
+      formDataToSend.writer = formData.writer;
+      formDataToSend.img = formData.img;
+      formDataToSend.user_id = 1;
+      formDataToSend.owner_comment = formData.owner_comment;
 
       await axios.post('/api/addbook', formDataToSend);
       
@@ -76,7 +76,6 @@ function AddBook() {
         />
       </Form.Group>
 
-
       <Form.Group controlId="formOwnerComment">
         <Form.Label>Оставьте ваш комментарий</Form.Label>
         <Form.Control
@@ -98,4 +97,3 @@ function AddBook() {
 }
 
 export default AddBook;
-

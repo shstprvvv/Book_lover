@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/addbook', async (req, res) => {
+
   const { nameBook, writer } = req.body;
 
   try {
@@ -28,7 +29,7 @@ router.post('/addbook', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
   
-});
 
+});
 
 export default router;
