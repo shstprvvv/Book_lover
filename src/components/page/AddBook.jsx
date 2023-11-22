@@ -27,7 +27,7 @@ function AddBook() {
       formDataToSend.nameBook = formData.nameBook;
       formDataToSend.writer = formData.writer;
       formDataToSend.img = formData.img;
-      formDataToSend.user_id = 1;
+      // formDataToSend.user_id = 1;
       formDataToSend.owner_comment = formData.owner_comment;
 
       await axios.post('/api/addbook', formDataToSend);

@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+
 function FormMainPage({ book, setModalContent, handleShow }) {
   const modalHandler = () => {
     setModalContent(book);
@@ -18,14 +19,11 @@ function FormMainPage({ book, setModalContent, handleShow }) {
         <Card.Text>{`Writer: ${book.writer}`}</Card.Text>
         {/* <Card.Text>{`IMDB: ${}`}</Card.Text> */}
         <Button variant="primary">Удалить</Button>
-        <div className="mr-1">
-          <Button onClick={handleShow} variant="primary">
-            Редактировать
-          </Button>
-        </div>
-        <div className="mt-1">
-          <Button variant="primary">Смотреть полную информацию</Button>
-        </div>
+
+        <div className="mr-1"><Button variant="primary">Редактировать</Button></div>
+        <div className="mt-1"><Button variant="primary">Смотреть полную информацию</Button></div>
+        <Button onClick={addToFavorites} variant="primary">Избранное</Button>
+
       </Card.Body>
     </Card>
   );
