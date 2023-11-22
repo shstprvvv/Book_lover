@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Header from './Header';
 import MainPage from './page/MainPage';
 import SignUpPage from './page/SignUpPage';
 import LoginPage from './page/LoginPage';
@@ -10,7 +11,7 @@ import BookPage from './page/BookPage';
 export default function App() {
   return (
     <div className="container">
-      {/* <Navbar /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -21,4 +22,6 @@ export default function App() {
       </Routes>
     </div>
   )
+
+
 }
