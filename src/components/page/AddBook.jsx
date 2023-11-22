@@ -31,9 +31,10 @@ function AddBook() {
       formDataToSend.owner_comment = formData.owner_comment;
 
       await axios.post('/api/addbook', formDataToSend);
-
+  
       console.log(formDataToSend);
-      window.location.href = '/';
+      window.location.href = "/";
+
     } catch (error) {
       // Handle errors
       console.error('Error adding book:', error.message);
