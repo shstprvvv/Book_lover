@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function BasicExample() {
+function FormMainPage({book}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="" />
@@ -16,4 +16,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default FormMainPage;
