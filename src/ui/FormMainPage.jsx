@@ -11,8 +11,8 @@ function FormMainPage({ book }) {
         <Card.Text>{`Writer: ${book.writer}`}</Card.Text>
         {/* <Card.Text>{`IMDB: ${}`}</Card.Text> */}
         <Button variant="primary">Удалить</Button>
-        <Button variant="primary">Редактировать</Button>
-        <div className="card mt-1"><Button variant="primary">Смотреть полную информацию</Button></div>
+        <div className="mr-1"><Button variant="primary">Редактировать</Button></div>
+        <div className="mt-1"><Button variant="primary">Смотреть полную информацию</Button></div>
       </Card.Body>
     </Card>
   );
