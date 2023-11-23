@@ -14,4 +14,16 @@ router.post('/addbook', async (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete('/book/:id', async (req, res) => {
+  /* энпоинт удаления */
+  try {
+    console.log(req.params);
+    const { id } = req.params; /* получаем айди из параметра */
+    await Book.destroy({ where: { id } }); /* удаляем пост из бд */
+    res.sendStatus(200); /* возращаем статус 200 все ок */
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 export default router;
