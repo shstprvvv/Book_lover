@@ -19,13 +19,25 @@ module.exports = (sequelize, DataTypes) => {
   }
   Favorites_book.init(
     {
-      book_id: DataTypes.INTEGER,
-      user_id: DataTypes.INTEGER,
+      book_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
-      modelName: 'Favorites_book',
+      indexes: [
+        {
+          unique: true,
+          fields: ['book_id', 'user_id'],
+        },
+      ],
     },
   );
+
   return Favorites_book;
 };

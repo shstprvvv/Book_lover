@@ -16,7 +16,6 @@ export default function LoginPage() {
     try {
       const response = await axios.post('/api/auth/login', formData);
       if (response.status === 200) {
-        console.log(response.data);
         setError({
           email: false,
           password: false,

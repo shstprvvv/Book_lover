@@ -1,5 +1,5 @@
 import express from 'express';
-import { Book } from '../../db/models';
+import { Book, Favorites_book } from '../../db/models';
 
 const router = express.Router();
 
@@ -30,24 +30,14 @@ router.post('/addbook', async (req, res) => {
   }
 });
 router.post('/add-to-favorites', async (req, res) => {
-  const { nameBook, writer } = req.body;
   req.body.user_id = res.locals.user.id;
+  res.sendStatus(200);
 
   try {
-    // Check if the book already exists in the database
-    const existingBook = await Book.findOne({ where: { nameBook, writer } });
-
-    if (existingBook) {
-      // Book already exists, send an error response
-      return res.status(400).json({ error: 'Book already exists in the database.' });
-    }
-
-    // Book doesn't exist, proceed with creating the book
-    await Book.create(req.body);
-
-    res.redirect('/');
+    await Favorites_book.create(req.body);
+;
   } catch (error) {
-    console.error('Error adding book:', error.message);
+    console.error('Error adding book to favourites:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -55,7 +45,6 @@ router.post('/add-to-favorites', async (req, res) => {
 router.delete('/book/:id', async (req, res) => {
   /* энпоинт удаления */
   try {
-    console.log(req.params);
     const { id } = req.params; /* получаем айди из параметра */
     await Book.destroy({ where: { id } }); /* удаляем пост из бд */
     res.sendStatus(200); /* возращаем статус 200 все ок */

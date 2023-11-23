@@ -8,7 +8,7 @@ import AccountPage from './page/AccountPage';
 import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
-export default function App({ books }) {
+export default function App({ books, favouriteBooks, userBooks }) {
   return (
     <div className="container">
       <Header />
@@ -16,7 +16,7 @@ export default function App({ books }) {
         <Route path="/" element={<MainPage books={books} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/account" element={<AccountPage />} />
+        <Route path="/account" element={<AccountPage favouriteBooks={favouriteBooks} userBooks={userBooks} />} />
         <Route path="/addbook" element={<AddBook />} />
         <Route path="/bookpage" element={<BookPage />} />
       </Routes>
