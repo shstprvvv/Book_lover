@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const books = await Book.findAll();
-  // console.log(books);
   const initState = { books };
   res.render('Layout', initState);
 });
@@ -29,7 +28,6 @@ router.get('/account', async (req, res) => {
       },
     ],
   });
-  console.log(books);
   const initState = { books };
 
   console.log(res.locals.user.id);
