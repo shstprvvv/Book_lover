@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const books = await Book.findAll();
+
   const initState = { books };
+
   res.render('Layout', initState);
 });
 
@@ -18,7 +20,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/account', async (req, res) => {
-  const books = await Book.findAll({
+  const favouriteBooks = await Book.findAll({
     include: [
       {
         model: Favorites_book,
@@ -28,9 +30,14 @@ router.get('/account', async (req, res) => {
       },
     ],
   });
-  const initState = { books };
 
-  console.log(res.locals.user.id);
+  const userBooks = await Book.findAll({
+    where: {
+      user_id: res.locals.user.id,
+    },
+  });
+  const initState = { favouriteBooks, userBooks };
+
   res.render('Layout', initState);
 });
 

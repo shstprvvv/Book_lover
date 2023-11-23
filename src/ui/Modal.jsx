@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalWindow({ nameBook, writer, img, handleClose, show }) {
-  console.log('--------->', nameBook, writer, img);
-
+export default function ModalWindow({
+  nameBook, writer, img, handleClose, show,
+}) {
   return (
     <>
       {/* <Button variant="primary" onClick={handleShow}>
