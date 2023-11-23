@@ -9,7 +9,8 @@ import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
 
-export default function App({ books, favouriteBooks, userBooks, oneBook }) {
+
+export default function App({ books, favouriteBooks, userBooks, oneBook, comments }) {
   
   const style = {
     backgroundImage:
@@ -18,6 +19,7 @@ export default function App({ books, favouriteBooks, userBooks, oneBook }) {
     backgroundPosition: 'center',
     height: '100vh',
   };
+
 
   return (
     <div style={style}>
@@ -28,7 +30,7 @@ export default function App({ books, favouriteBooks, userBooks, oneBook }) {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account" element={<AccountPage favouriteBooks={favouriteBooks} userBooks={userBooks} />} />
         <Route path="/addbook" element={<AddBook />} />
-        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook}/>} />
+        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} />} />
       </Routes>
     </div>
   );

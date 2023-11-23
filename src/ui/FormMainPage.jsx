@@ -45,7 +45,7 @@ function FormMainPage({
         <div className="mt-1" onClick={handleShow}><Button variant="primary">Редактировать</Button></div>
 
         <div className="mt-1"><Button variant="primary" onClick={() => redirectId(book.id)}>Смотреть полную информацию</Button></div>
-        {/* <Button onClick={addToFavorites} variant="primary">Избранное</Button> */}
+        <Button onClick={addToFavorites} variant="primary">Избранное</Button>
 
       </Card.Body>
     </Card>
