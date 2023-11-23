@@ -53,15 +53,23 @@ router.post('/add-to-favorites', async (req, res) => {
 });
 
 router.delete('/book/:id', async (req, res) => {
-  /* энпоинт удаления */
   try {
-    console.log(req.params);
-    const { id } = req.params; /* получаем айди из параметра */
-    await Book.destroy({ where: { id } }); /* удаляем пост из бд */
-    res.sendStatus(200); /* возращаем статус 200 все ок */
+    const { id } = req.params;
+    await Book.destroy({ where: { id } });
+    res.sendStatus(200);
   } catch (err) {
     console.log(err);
   }
 });
+
+// router.get('/bookpage/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const oneBook = await Book.findByPk(id);
+//     res.render('Layout', { oneBook });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 export default router;

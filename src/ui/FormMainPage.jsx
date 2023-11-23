@@ -9,6 +9,10 @@ function FormMainPage({
     setModalContent(book);
   };
 
+  const redirectId = (id) => {
+    window.location.href = `/bookpage/${id}`;
+  };
+
   return (
     <Card
       onClick={modalHandler}
@@ -23,7 +27,7 @@ function FormMainPage({
 
         <Button variant="primary" onClick={() => deleteHandler(book.id)}>Удалить</Button>
         <div className="mt-1" onClick={handleShow}><Button variant="primary">Редактировать</Button></div>
-        <div className="mt-1"><Button variant="primary">Смотреть полную информацию</Button></div>
+        <div className="mt-1"><Button variant="primary" onClick={() => redirectId(book.id)}>Смотреть полную информацию</Button></div>
         {/* <Button onClick={addToFavorites} variant="primary">Избранное</Button> */}
 
       </Card.Body>
