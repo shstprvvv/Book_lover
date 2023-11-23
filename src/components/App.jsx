@@ -8,7 +8,9 @@ import AccountPage from './page/AccountPage';
 import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
-export default function App({ books }) {
+
+export default function App({ books, favouriteBooks, userBooks, oneBook }) {
+  
   const style = {
     backgroundImage:
       "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
@@ -24,9 +26,9 @@ export default function App({ books }) {
         <Route path="/" element={<MainPage books={books} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/account" element={<AccountPage />} />
+        <Route path="/account" element={<AccountPage favouriteBooks={favouriteBooks} userBooks={userBooks} />} />
         <Route path="/addbook" element={<AddBook />} />
-        <Route path="/bookpage" element={<BookPage />} />
+        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook}/>} />
       </Routes>
     </div>
   );

@@ -11,7 +11,6 @@ export default function FormSingup() {
     try {
       const response = await axios.post('/api/auth/signup', formData);
       if (response.status === 200) {
-        console.log(response.data);
         window.location.href = '/';
       }
     } catch (error) {

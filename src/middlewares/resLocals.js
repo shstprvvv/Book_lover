@@ -5,7 +5,6 @@ require('dotenv').config();
 
 export default function resLocals(req, res, next) {
   try {
-    // console.log(req.cookies);
     const { refreshToken } = req.cookies;
     const { user } = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     res.locals.user = user;
