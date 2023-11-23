@@ -30,12 +30,14 @@ router.get('/account', async (req, res) => {
       },
     ],
   });
+
   const userBooks = await Book.findAll({
     where: {
       user_id: res.locals.user.id,
     },
   });
   const initState = { favouriteBooks, userBooks };
+
   res.render('Layout', initState);
 });
 
