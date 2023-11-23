@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FormMainPage from '../../ui/FormMainPage';
+import ModalWindow from '../../ui/Modal';
 
 export default function MainPage({ books }) {
   // console.log('---------', books);
@@ -20,5 +21,29 @@ export default function MainPage({ books }) {
   };
   return (
     <div className="row">{newBooks.map((book) => <FormMainPage key={book.id} book={book} deleteHandler={deleteHandler} />)}</div>
+
+  const [modalContent, setModalContent] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <div className="row">
+        {newBooks.map((book) => (
+          <FormMainPage
+            key={book.id}
+            book={book}
+            setModalContent={setModalContent}
+            handleShow={handleShow}
+            deleteHandler={deleteHandler}
+          />
+        ))}
+      </div>
+      <div className="col-12">
+        <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
+      </div>
+    </>
   );
 }

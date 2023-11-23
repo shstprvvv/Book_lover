@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { RiFileUploadLine } from 'react-bootstrap-icons';
 import axios from 'axios';
 
 function AddBook() {
@@ -28,12 +27,14 @@ function AddBook() {
       formDataToSend.nameBook = formData.nameBook;
       formDataToSend.writer = formData.writer;
       formDataToSend.img = formData.img;
-      formDataToSend.user_id = 1;
+      // formDataToSend.user_id = 1;
       formDataToSend.owner_comment = formData.owner_comment;
 
-      const response = await axios.post('/api/addbook', formDataToSend);
-
+      await axios.post('/api/addbook', formDataToSend);
+  
       console.log(formDataToSend);
+      window.location.href = "/";
+
     } catch (error) {
       // Handle errors
       console.error('Error adding book:', error.message);
