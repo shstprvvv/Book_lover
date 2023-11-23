@@ -3,7 +3,6 @@ import FormMainPage from '../../ui/FormMainPage';
 import ModalWindow from '../../ui/Modal';
 
 export default function MainPage({ books }) {
-  // console.log('---------', books);
   const [newBooks, setNewBooks] = useState(books);
 
   const deleteHandler = (id) => {
@@ -19,8 +18,8 @@ export default function MainPage({ books }) {
       }
     });
   };
-  return (
-    <div className="row">{newBooks.map((book) => <FormMainPage key={book.id} book={book} deleteHandler={deleteHandler} />)}</div>
+  // return (
+  //   <div className="row">{newBooks.map((book) => <FormMainPage key={book.id} book={book} deleteHandler={deleteHandler} />)}</div>
 
   const [modalContent, setModalContent] = useState(null);
   const [show, setShow] = useState(false);

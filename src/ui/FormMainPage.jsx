@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function FormMainPage({ book, deleteHandler }) {`````
-
-function FormMainPage({ book, setModalContent, handleShow }) {
+function FormMainPage({
+  book, deleteHandler, setModalContent, handleShow,
+}) {
   const modalHandler = () => {
     setModalContent(book);
   };
@@ -22,14 +22,9 @@ function FormMainPage({ book, setModalContent, handleShow }) {
         {/* <Card.Text>{`IMDB: ${}`}</Card.Text> */}
 
         <Button variant="primary" onClick={() => deleteHandler(book.id)}>Удалить</Button>
-        <div className="mt-1"><Button variant="primary">Редактировать</Button></div>
-
-        <Button variant="primary">Удалить</Button>
-
-        <div className="mr-1"><Button variant="primary">Редактировать</Button></div>
-
+        <div className="mt-1" onClick={handleShow}><Button variant="primary">Редактировать</Button></div>
         <div className="mt-1"><Button variant="primary">Смотреть полную информацию</Button></div>
-        <Button onClick={addToFavorites} variant="primary">Избранное</Button>
+        {/* <Button onClick={addToFavorites} variant="primary">Избранное</Button> */}
 
       </Card.Body>
     </Card>
