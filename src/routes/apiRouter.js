@@ -1,5 +1,7 @@
 import express from 'express';
-import { Book, Favorites_book, Comment } from '../../db/models';
+
+import { Book, Favorites_book, Comment, Rating } from '../../db/models';
+
 
 const router = express.Router();
 
@@ -48,6 +50,27 @@ router.post('/addcomment', async (req, res) => {
 
   res.redirect('/');
 });
+
+// router.get('/rating', async (req, res) => {
+//   try {
+//     console.log('=======>', req.body);
+//     const { id } = req.body;
+//     const ratingBook = await Rating.findAll({
+//       where: {
+//         book_id: id,
+//       },
+//     });
+
+//     res.send(ratingBook);
+
+//     console.log('-=-=--=-=>>>', ratingBook);
+
+//     console.log('=======>', ratingBook);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
 
 router.delete('/book/:id', async (req, res) => {
   try {

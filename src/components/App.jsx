@@ -8,8 +8,6 @@ import AccountPage from './page/AccountPage';
 import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
-
-
 export default function App({ books, favouriteBooks, userBooks, oneBook, comments }) {
   
   const style = {
@@ -28,9 +26,15 @@ export default function App({ books, favouriteBooks, userBooks, oneBook, comment
         <Route path="/" element={<MainPage books={books} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/account" element={<AccountPage favouriteBooks={favouriteBooks} userBooks={userBooks} />} />
+        <Route
+          path="/account"
+          element={<AccountPage favouriteBooks={favouriteBooks} userBooks={userBooks} />}
+        />
         <Route path="/addbook" element={<AddBook />} />
+
+
         <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} />} />
+
       </Routes>
     </div>
   );

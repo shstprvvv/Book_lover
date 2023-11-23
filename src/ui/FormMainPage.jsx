@@ -3,11 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
-
-function FormMainPage({
-  book, deleteHandler, setModalContent, handleShow,
-}) {
-
+function FormMainPage({ book, deleteHandler, setModalContent, handleShow }) {
   const modalHandler = () => {
     setModalContent(book);
   };
@@ -41,11 +37,13 @@ function FormMainPage({
         {/* <Card.Text>{`IMDB: ${}`}</Card.Text> */}
 
 
+
         <Button variant="primary" onClick={() => deleteHandler(book.id)}>Удалить</Button>
         <div className="mt-1" onClick={handleShow}><Button variant="primary">Редактировать</Button></div>
 
         <div className="mt-1"><Button variant="primary" onClick={() => redirectId(book.id)}>Смотреть полную информацию</Button></div>
         <Button onClick={addToFavorites} variant="primary">Избранное</Button>
+
 
       </Card.Body>
     </Card>

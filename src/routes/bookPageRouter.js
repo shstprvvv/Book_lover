@@ -1,12 +1,16 @@
 import express from 'express';
-import { Book, Comment, User } from '../../db/models';
+
+import { Book, Comment, User, Rating } from '../../db/models';
+
 
 const bookPageRouter = express.Router();
 
 bookPageRouter.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oneBook = await Book.findByPk(id);
+
+    const oneBook = await Book.findByPk(id, { include: Rating }); // include model Rating
+    
     const comments = await Comment.findAll({
       where: {
         book_id: Number(req.params.id),
@@ -19,6 +23,7 @@ bookPageRouter.get('/:id', async (req, res) => {
       ],
     });
     res.render('Layout', { oneBook, comments });
+
   } catch (error) {
     console.log(error);
   }
