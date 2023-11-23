@@ -13,11 +13,11 @@ function FormMainPage({
   };
   const addToFavorites = async (e) => {
     e.preventDefault();
-    const dataToSend = {}
-    dataToSend.book_id = book.id
+    const dataToSend = {};
+    dataToSend.book_id = book.id;
 
     try {
-      await axios.post('/api/add-to-favorites', dataToSend)
+      await axios.post('/api/add-to-favorites', dataToSend);
     } catch (error) {
       // Handle errors
       console.error('Error adding book:', error.message);
