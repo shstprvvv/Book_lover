@@ -1,4 +1,6 @@
 import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function BookPage({ oneBook }) {
   return (
@@ -12,6 +14,11 @@ export default function BookPage({ oneBook }) {
           <p className="card-text">{`Writer: ${oneBook.writer}`}</p>
           <p className="card-text">{`Description: ${oneBook.owner_comment}`}</p>
           {/* <p className="card-text"><small className="text-muted">{`Rating count: ${film.imDbRatingCount}`}</small></p> */}
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Add your comment</Form.Label>
+            <Form.Control as="textarea" rows={2} />
+          </Form.Group>
+          <Button variant="success">Success</Button>
         </div>
       </div>
     </div>
