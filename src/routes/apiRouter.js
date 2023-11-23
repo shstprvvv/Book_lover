@@ -1,5 +1,7 @@
 import express from 'express';
-import { Book, Favorites_book, Rating } from '../../db/models';
+
+import { Book, Favorites_book, Comment, Rating } from '../../db/models';
+
 
 const router = express.Router();
 
@@ -39,6 +41,14 @@ router.post('/add-to-favorites', async (req, res) => {
     console.error('Error adding book to favourites:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+router.post('/addcomment', async (req, res) => {
+  req.body.user_id = res.locals.user.id;
+  console.log(req.body);
+
+  await Comment.create(req.body);
+
+  res.redirect('/');
 });
 
 // router.get('/rating', async (req, res) => {

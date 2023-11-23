@@ -1,42 +1,103 @@
+// <<<<<<< rating
 // Ваш компонент BookPage
-import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+// import React, { useState } from 'react';
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
 
+// import Rating from '../../ui/Rating';
+
+// export default function BookPage({ oneBook }) {
+//   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
+
+//   const averageRating = sum / oneBook.Ratings.length;
+//   console.log(averageRating);
+
+//   const [userRating, setUserRating] = useState(averageRating);
+
+//   const handleRatingChange = (newRating) => {
+//     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
+//     console.log('New rating:', newRating);
+//     setUserRating(newRating);
+//   };
+
+//   return (
+//     <div className="row g-0">
+//       <div className="col-md-4">
+//         <img src={oneBook.img} alt={oneBook.nameBook} />
+// =======
+import React, { useState } from 'react';
+import { Form, Button, Card } from 'react-bootstrap';
+import axios from 'axios';
+import CommentCard from '../../ui/CommentCard';
 import Rating from '../../ui/Rating';
 
-export default function BookPage({ oneBook }) {
+export default function BookPage({ oneBook, comments }) {
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
-
   const averageRating = sum / oneBook.Ratings.length;
   console.log(averageRating);
-
-  const [userRating, setUserRating] = useState(averageRating);
-
-  const handleRatingChange = (newRating) => {
+  
+   const [userRating, setUserRating] = useState(averageRating);
+  
+   const handleRatingChange = (newRating) => {
     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
     console.log('New rating:', newRating);
     setUserRating(newRating);
+  };
+  
+  const [comment, setComment] = useState('');
+  console.log(comments[comments.length - 1].User.name);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formDataToSend = {};
+      formDataToSend.user_comment = comment;
+      formDataToSend.book_id = oneBook.id;
+      await axios.post('/api/addcomment', formDataToSend);
+      setComment('');
+    } catch (error) {
+      // Handle errors
+      console.error('Error adding comment:', error.message);
+    }
   };
 
   return (
     <div className="row g-0">
       <div className="col-md-4">
-        <img src={oneBook.img} alt={oneBook.nameBook} />
+        <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
+
       </div>
       <div className="col-md-8">
         <div className="card-body">
           <h3 className="card-title">{oneBook.nameBook}</h3>
           <p className="card-text">{`Writer: ${oneBook.writer}`}</p>
           <p className="card-text">{`Description: ${oneBook.owner_comment}`}</p>
+
           <p className="card-text">
             Rating: <Rating initialRating={averageRating} onRatingChange={handleRatingChange} />
           </p>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Add your comment</Form.Label>
-            <Form.Control as="textarea" rows={2} />
+            <Form.Label htmlFor="user_comment">Add your comment</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={2}
+              name="user_comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
           </Form.Group>
-          <Button variant="success">Success</Button>
+
+          <Button onClick={handleSubmit} variant="success">
+            Submit
+          </Button>
+          <br />
+          <br />
+
+          <div>
+            {comments.map((oneComment) => (
+              <CommentCard oneComment={oneComment} />
+            ))}
+          </div>
+
         </div>
       </div>
     </div>
