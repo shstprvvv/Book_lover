@@ -1,5 +1,5 @@
 import express from 'express';
-import { Book, Favorites_book } from '../../db/models';
+import { Book, Favorites_book, Rating } from '../../db/models';
 
 const router = express.Router();
 
@@ -35,20 +35,38 @@ router.post('/add-to-favorites', async (req, res) => {
 
   try {
     await Favorites_book.create(req.body);
-;
   } catch (error) {
     console.error('Error adding book to favourites:', error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
+// router.get('/rating', async (req, res) => {
+//   try {
+//     console.log('=======>', req.body);
+//     const { id } = req.body;
+//     const ratingBook = await Rating.findAll({
+//       where: {
+//         book_id: id,
+//       },
+//     });
+
+//     res.send(ratingBook);
+
+//     console.log('-=-=--=-=>>>', ratingBook);
+
+//     console.log('=======>', ratingBook);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+
 router.delete('/book/:id', async (req, res) => {
   try {
-
     const { id } = req.params; /* получаем айди из параметра */
     await Book.destroy({ where: { id } }); /* удаляем пост из бд */
     res.sendStatus(200); /* возращаем статус 200 все ок */
-
   } catch (err) {
     console.log(err);
   }

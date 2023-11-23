@@ -1,5 +1,5 @@
 import express from 'express';
-import { Book, Favorites_book } from '../../db/models';
+import { Book, Favorites_book, Rating } from '../../db/models';
 
 const router = express.Router();
 

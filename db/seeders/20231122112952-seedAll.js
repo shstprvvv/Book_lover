@@ -77,6 +77,20 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          book_raitng: 4,
+          user_id: 1,
+          book_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          book_raitng: 3,
+          user_id: 1,
+          book_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {},
     );
