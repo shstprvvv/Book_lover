@@ -2,13 +2,28 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import '../../config/RegistrationPage.css';
 
 export default function LoginPage() {
   const [error, setError] = useState({
     email: false,
     password: false,
+    phone: '+7',
     text: '',
   });
+
+  const handlePhoneChange = (e) => {
+    let newValue = e.target.value;
+    newValue = newValue.replace(/\D/g, '');
+    if (!newValue.includes('+7')) {
+      newValue = `${newValue}`;
+    }
+
+    // Проверяем, ограничиваем ли длину введенных цифр до 10
+    if (newValue.length <= 12) {
+      setError((prevError) => ({ ...prevError, phone: newValue }));
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +34,7 @@ export default function LoginPage() {
         setError({
           email: false,
           password: false,
+          phone: false,
           text: '',
         });
         window.location.href = '/';
@@ -43,26 +59,59 @@ export default function LoginPage() {
     }
   };
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control isInvalid={error.email} name="email" type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
-      </Form.Group>
+  const formContainerStyle = {
+    background: 'white',
+    borderRadius: '8px',
+    padding: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    width: '300px',
+    margin: 'auto',
+    marginTop: '10vh',
+  };
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          isInvalid={error.password}
-          name="password"
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+  return (
+    <div>
+      <div style={formContainerStyle}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              isInvalid={error.email}
+              name="email"
+              type="email"
+              placeholder="Enter email"
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPhone">
+            <Form.Label>Phone number</Form.Label>
+            <Form.Control
+              name="phone"
+              type="tel"
+              placeholder="Enter phone"
+              value={error.phone}
+              onChange={handlePhoneChange}
+              pattern="\+?[0-9]*"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              isInvalid={error.password}
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    </div>
   );
 }
