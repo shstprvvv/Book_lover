@@ -20,8 +20,18 @@ export default function FormSingup() {
     }
   };
 
+  const formContainerStyle = {
+    background: 'white',
+    borderRadius: '8px',
+    padding: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    width: '300px',
+    margin: 'auto',
+    marginTop: '10vh',
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form style={formContainerStyle} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Name</Form.Label>
         <Form.Control name="name" type="name" placeholder="Enter name" />
@@ -35,7 +45,7 @@ export default function FormSingup() {
 
       <Form.Group className="mb-3" controlId="formBasicPhone">
         <Form.Label>Phone number</Form.Label>
-        <Form.Control name="phone" type="phone" placeholder="Enter phone number" />
+        <Form.Control name="phone" type="phone" placeholder="Enter phone number" defaultValue="+7" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">

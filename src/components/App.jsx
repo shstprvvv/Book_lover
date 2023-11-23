@@ -9,8 +9,16 @@ import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
 export default function App({ books }) {
+  const style = {
+    backgroundImage:
+      "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh',
+  };
+
   return (
-    <div className="container">
+    <div style={style}>
       <Header />
       <Routes>
         <Route path="/" element={<MainPage books={books} />} />
