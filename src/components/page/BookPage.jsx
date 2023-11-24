@@ -1,30 +1,3 @@
-// <<<<<<< rating
-// Ваш компонент BookPage
-// import React, { useState } from 'react';
-// import Form from 'react-bootstrap/Form';
-// import Button from 'react-bootstrap/Button';
-
-// import Rating from '../../ui/Rating';
-
-// export default function BookPage({ oneBook }) {
-//   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
-
-//   const averageRating = sum / oneBook.Ratings.length;
-//   console.log(averageRating);
-
-//   const [userRating, setUserRating] = useState(averageRating);
-
-//   const handleRatingChange = (newRating) => {
-//     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
-//     console.log('New rating:', newRating);
-//     setUserRating(newRating);
-//   };
-
-//   return (
-//     <div className="row g-0">
-//       <div className="col-md-4">
-//         <img src={oneBook.img} alt={oneBook.nameBook} />
-// =======
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
@@ -35,17 +8,17 @@ export default function BookPage({ oneBook, comments }) {
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
   const averageRating = sum / oneBook.Ratings.length;
   console.log(averageRating);
-  
-   const [userRating, setUserRating] = useState(averageRating);
-  
-   const handleRatingChange = (newRating) => {
+
+  const [userRating, setUserRating] = useState(averageRating);
+
+  const handleRatingChange = (newRating) => {
     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
     console.log('New rating:', newRating);
     setUserRating(newRating);
   };
-  
+
   const [comment, setComment] = useState('');
-  console.log(comments[comments.length - 1].User.name);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -64,7 +37,6 @@ export default function BookPage({ oneBook, comments }) {
     <div className="row g-0">
       <div className="col-md-4">
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
-
       </div>
       <div className="col-md-8">
         <div className="card-body">
@@ -97,7 +69,6 @@ export default function BookPage({ oneBook, comments }) {
               <CommentCard oneComment={oneComment} />
             ))}
           </div>
-
         </div>
       </div>
     </div>
