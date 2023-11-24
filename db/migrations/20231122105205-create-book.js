@@ -27,7 +27,7 @@ module.exports = {
 
       },
       owner_comment: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,

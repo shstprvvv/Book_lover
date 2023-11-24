@@ -29,37 +29,47 @@ export default function FormSingup() {
     marginTop: '10vh',
   };
 
+  const style = {
+    backgroundImage:
+      "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '650px',
+  };
+
   return (
-    <Form style={formContainerStyle} onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control name="name" type="name" placeholder="Enter name" />
-      </Form.Group>
+    <div style={style}>
+      <Form style={formContainerStyle} onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control name="name" type="name" placeholder="Enter name" />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control name="email" type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">Well never share your email with anyone else.</Form.Text>
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control name="email" type="email" placeholder="Enter email" />
+          <Form.Text className="text-muted">Well never share your email with anyone else.</Form.Text>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPhone">
-        <Form.Label>Phone number</Form.Label>
-        <Form.Control name="phone" type="phone" placeholder="Enter phone number" defaultValue="+7" />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPhone">
+          <Form.Label>Phone number</Form.Label>
+          <Form.Control name="phone" type="phone" placeholder="Enter phone number" defaultValue="+7" />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control name="password" type="password" placeholder="Password" />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control name="password" type="password" placeholder="Password" />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicRepeat">
-        <Form.Label>Repeat password</Form.Label>
-        <Form.Control name="repeat" type="password" placeholder="Password" />
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicRepeat">
+          <Form.Label>Repeat password</Form.Label>
+          <Form.Control name="repeat" type="password" placeholder="Password" />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }

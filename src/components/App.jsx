@@ -9,6 +9,7 @@ import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
 export default function App({
+
   books, favouriteBooks, userBooks, oneBook, comments, user,
 }) {
   const style = {
@@ -20,7 +21,6 @@ export default function App({
   };
 
   return (
-    <div style={style}>
       <Header user={user} />
       <Routes>
         <Route path="/" element={<MainPage books={books} user={user} />} />
@@ -32,9 +32,11 @@ export default function App({
         />
         <Route path="/addbook" element={<AddBook />} />
 
+
         <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} user={user} />} />
 
+
       </Routes>
-    </div>
+    </>
   );
 }
