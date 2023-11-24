@@ -3,11 +3,12 @@ import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import CommentCard from '../../ui/CommentCard';
 import Rating from '../../ui/Rating';
+import BookRatingForm from '../../ui/BookRatingForm';
 
 export default function BookPage({ oneBook, comments }) {
+  console.log('-->', oneBook);
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
   const averageRating = sum / oneBook.Ratings.length;
-
 
   const [userRating, setUserRating] = useState(averageRating);
 
@@ -37,6 +38,11 @@ export default function BookPage({ oneBook, comments }) {
     <div className="row g-0">
       <div className="col-md-4">
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
+
+        <div>
+          <BookRatingForm />
+        </div>
+
       </div>
       <div className="col-md-8">
         <div className="card-body">

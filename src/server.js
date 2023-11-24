@@ -47,6 +47,4 @@ app.use('/api', apiRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/bookpage', bookPageRouter);
 
-
-
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
