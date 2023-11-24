@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FormMainPage from '../../ui/FormMainPage';
 import ModalWindow from '../../ui/Modal';
+import { Button } from 'react-bootstrap';
 
 export default function AccountPage({ favouriteBooks, userBooks }) {
   const [newBooks, setNewBooks] = useState(favouriteBooks);
@@ -27,9 +28,18 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  const style = {
+    backgroundImage:
+      "url('https://img1.akspic.ru/crops/5/9/9/2/4/142995/142995-minimalizm-cvet-purpur-rozovyj-artist-3840x2160.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '700px',
+  };
+
   return (
-    <>
-      <div>Список ваших книг</div>
+    <div style={style}>
+      <div><Button variant="light" size="lg">Список ваших книг</Button></div>
       <div className="row">
         {userBooks.map((book) => (
           <FormMainPage
@@ -44,7 +54,7 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
       <div className="col-12">
         <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
       </div>
-      <div>Ваши любимые книги</div>
+      <div><Button variant="light" size="lg">Ваши любимые книги</Button></div>
       <div className="row">
         {newBooks.map((book) => (
           <FormMainPage
@@ -59,6 +69,6 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
       <div className="col-12">
         <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
       </div>
-    </>
+    </div>
   );
 }
