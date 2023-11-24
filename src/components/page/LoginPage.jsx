@@ -14,16 +14,19 @@ export default function LoginPage() {
 
   const handlePhoneChange = (e) => {
     let newValue = e.target.value;
-    newValue = newValue.replace(/\D/g, '');
+    // newValue = newValue.replace(/\D/g, ''); // Uncomment this line to remove non-numeric characters
+
     if (!newValue.includes('+7')) {
-      newValue = `${newValue}`;
+      newValue = `+7${newValue}`;
     }
 
-    // Проверяем, ограничиваем ли длину введенных цифр до 10
-    if (newValue.length <= 12) {
+    // Проверяем, ограничиваем ли длину введенных цифр до 12 и проверяем, что содержит только цифры после символа '+'
+    if (/^\+7\d*$/.test(newValue) && newValue.length <= 12) {
       setError((prevError) => ({ ...prevError, phone: newValue }));
     }
   };
+
+  // && /^\d+$/.test(newValue)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
