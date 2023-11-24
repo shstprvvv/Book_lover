@@ -9,18 +9,17 @@ export default function BookPage({ oneBook, comments }) {
   console.log('-->', oneBook);
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
   const averageRating = sum / oneBook.Ratings.length;
-  
 
   const [userRating, setUserRating] = useState(averageRating);
 
   const handleRatingChange = (newRating) => {
     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
-    console.log('New rating:', newRating);
+
     setUserRating(newRating);
   };
 
   const [comment, setComment] = useState('');
-  console.log(comments[comments.length - 1].User.name);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -39,9 +38,11 @@ export default function BookPage({ oneBook, comments }) {
     <div className="row g-0">
       <div className="col-md-4">
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
+
         <div>
           <BookRatingForm />
         </div>
+
       </div>
       <div className="col-md-8">
         <div className="card-body">
