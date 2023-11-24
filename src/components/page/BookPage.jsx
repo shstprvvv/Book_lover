@@ -3,17 +3,17 @@ import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import CommentCard from '../../ui/CommentCard';
 import Rating from '../../ui/Rating';
+import BookRatingForm from '../../ui/BookRatingForm';
 
-export default function BookPage({ oneBook, comments }) {
+export default function BookPage({ oneBook, comments, user }) {
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
   const averageRating = sum / oneBook.Ratings.length;
-  console.log(averageRating);
 
   const [userRating, setUserRating] = useState(averageRating);
 
   const handleRatingChange = (newRating) => {
     // Здесь вы можете отправить новый рейтинг на сервер или выполнить другие действия
-    console.log('New rating:', newRating);
+
     setUserRating(newRating);
   };
 
@@ -37,6 +37,11 @@ export default function BookPage({ oneBook, comments }) {
     <div className="row g-0">
       <div className="col-md-4">
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
+
+        <div>
+          <BookRatingForm user={user} oneBook={oneBook} />
+        </div>
+
       </div>
       <div className="col-md-8">
         <div className="card-body">

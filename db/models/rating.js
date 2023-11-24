@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(User, {
         foreignKey: 'user_id',
       });
+
+
     }
   }
   Rating.init(

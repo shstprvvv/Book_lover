@@ -1,11 +1,12 @@
 import express from 'express';
 import { Book, Favorites_book, Rating } from '../../db/models';
+import { verifyAccessToken } from '../middlewares/verifyTokens';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
   const books = await Book.findAll();
-
+  
   const initState = { books };
 
   res.render('Layout', initState);
@@ -19,7 +20,7 @@ router.get('/login', (req, res) => {
   res.render('Layout');
 });
 
-router.get('/account', async (req, res) => {
+router.get('/account', verifyAccessToken, async (req, res) => {
   const favouriteBooks = await Book.findAll({
     include: [
       {

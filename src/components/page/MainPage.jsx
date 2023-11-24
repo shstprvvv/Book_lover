@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import FormMainPage from '../../ui/FormMainPage';
+import FormMainPage2 from '../../ui/FormMainPage2';
 import ModalWindow from '../../ui/Modal';
 // import { Display } from 'react-bootstrap-icons';
 
-export default function MainPage({ books }) {
+export default function MainPage({ books, user }) {
   const [newBooks, setNewBooks] = useState(books);
 
   const deleteHandler = (id) => {
@@ -52,7 +52,8 @@ export default function MainPage({ books }) {
 
       <div className="row">
         {newBooks.map((book) => (
-          <FormMainPage
+          <FormMainPage2
+            user={user}
             key={book.id}
             book={book}
             setModalContent={setModalContent}

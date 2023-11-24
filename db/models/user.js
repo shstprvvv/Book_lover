@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Favorites_book, {
         foreignKey: 'user_id',
       });
+   
+
     }
   }
   User.init(

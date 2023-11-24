@@ -56,15 +56,53 @@ apiAuthRouter.post('/signup', async (req, res) => {
 //   }
 // });
 
+// apiAuthRouter.post('/login', async (req, res) => {
+//   try {
+//     const { email, password, phone } = req.body;
+//     if (phone) {
+//       const foundUser = await User.findOne({ where: { phone } });
+//       if (!foundUser) return res.status(401).json({ message: 'Такого пользователя нет' });
+
+//       const isValidPassword = await bcrypt.compare(password, foundUser.hashpass);
+//       if (!isValidPassword) return res.status(403).json({ message: 'Неверный номер телефона' });
+
+//       const user = foundUser.get();
+//       delete user.hashpass;
+//       const { accessToken, refreshToken } = generateTokens({ user });
+//       res
+//         .cookie('accessToken', accessToken, cookieConfig.access)
+//         .cookie('refreshToken', refreshToken, cookieConfig.refresh)
+//         .sendStatus(200);
+//     } else if (email) {
+//       const foundUser = await User.findOne({ where: { email } });
+//       if (!foundUser) return res.status(401).json({ message: 'Такой почты нет' });
+
+//       const isValidPassword = await bcrypt.compare(password, foundUser.hashpass);
+//       if (!isValidPassword) return res.status(403).json({ message: 'Неверный пароль' });
+
+//       const user = foundUser.get();
+//       delete user.hashpass;
+//       const { accessToken, refreshToken } = generateTokens({ user });
+//       res
+//         .cookie('accessToken', accessToken, cookieConfig.access)
+//         .cookie('refreshToken', refreshToken, cookieConfig.refresh)
+//         .sendStatus(200);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
+
 apiAuthRouter.post('/login', async (req, res) => {
   try {
     const { email, password, phone } = req.body;
-    if (phone) {
-      const foundUser = await User.findOne({ where: { phone } });
-      if (!foundUser) return res.status(401).json({ message: 'Такого пользователя нет' });
+    if (email) {
+      const foundUser = await User.findOne({ where: { email } });
+      if (!foundUser) return res.status(401).json({ message: 'Такой почты нет' });
 
       const isValidPassword = await bcrypt.compare(password, foundUser.hashpass);
-      if (!isValidPassword) return res.status(403).json({ message: 'Неверный номер телефона' });
+      if (!isValidPassword) return res.status(403).json({ message: 'Неверный пароль' });
 
       const user = foundUser.get();
       delete user.hashpass;
@@ -73,12 +111,12 @@ apiAuthRouter.post('/login', async (req, res) => {
         .cookie('accessToken', accessToken, cookieConfig.access)
         .cookie('refreshToken', refreshToken, cookieConfig.refresh)
         .sendStatus(200);
-    } else if (email) {
-      const foundUser = await User.findOne({ where: { email } });
-      if (!foundUser) return res.status(401).json({ message: 'Такой почты нет' });
+    } else if (phone) {
+      const foundUser = await User.findOne({ where: { phone } });
+      if (!foundUser) return res.status(401).json({ message: 'Такого пользователя нет' });
 
       const isValidPassword = await bcrypt.compare(password, foundUser.hashpass);
-      if (!isValidPassword) return res.status(403).json({ message: 'Неверный пароль' });
+      if (!isValidPassword) return res.status(403).json({ message: 'Неверный номер телефона' });
 
       const user = foundUser.get();
       delete user.hashpass;

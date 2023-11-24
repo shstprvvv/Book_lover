@@ -9,13 +9,21 @@ import AddBook from './page/AddBook';
 import BookPage from './page/BookPage';
 
 export default function App({
-  books, favouriteBooks, userBooks, oneBook, comments,
+
+  books, favouriteBooks, userBooks, oneBook, comments, user,
 }) {
+  const style = {
+    backgroundImage:
+      "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh',
+  };
+
   return (
-    <>
-      <Header />
+      <Header user={user} />
       <Routes>
-        <Route path="/" element={<MainPage books={books} />} />
+        <Route path="/" element={<MainPage books={books} user={user} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
@@ -24,7 +32,9 @@ export default function App({
         />
         <Route path="/addbook" element={<AddBook />} />
 
-        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} />} />
+
+        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} user={user} />} />
+
 
       </Routes>
     </>
