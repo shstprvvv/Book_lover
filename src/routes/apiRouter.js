@@ -30,6 +30,34 @@ router.post('/addbook', async (req, res) => {
   }
 });
 
+router.patch('/editbook', async (req, res) => {
+  console.log(req.body)
+  const { id, nameBook, writer, img } = req.body;
+
+  try {
+    // Check if the book with the given id exists
+    const existingBook = await Book.findByPk(id);
+    
+    if (!existingBook) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    // Update the book with the new data
+    await existingBook.update({
+      nameBook,
+      writer,
+      img,
+    });
+
+
+
+    res.redirect('/account');
+  } catch (error) {
+    console.error('Error adding book:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 router.post('/adRating', async (req, res) => {
   try {
     const { user, rating, oneBook } = req.body;

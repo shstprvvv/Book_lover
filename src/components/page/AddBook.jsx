@@ -37,18 +37,33 @@ function AddBook() {
     }
   };
 
+
+
   const formContainerStyle = {
-    background: 'white',
+    background: '#D8BFD8',
+
     borderRadius: '8px',
     padding: '20px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     width: '300px',
     margin: 'auto',
-    marginTop: '10vh',
+
+    // marginTop: '10vh',
+  };
+
+
+  const style = {
+    backgroundImage:
+      "url('https://img1.akspic.ru/crops/4/0/0/5/5/155004/155004-minimalizm-ekoregion-fioletovyj-art-purpurnyj_cvet-3840x2160.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '700px',
   };
 
   return (
-    <Form style={formContainerStyle} onSubmit={handleSubmit}>
+    <div style={style}>
+    <Form onSubmit={handleSubmit} style={formContainerStyle}>
+
       <Form.Group controlId="formNameBook">
         <Form.Label>Введите название книги</Form.Label>
         <Form.Control
@@ -99,6 +114,7 @@ function AddBook() {
         Submit
       </Button>
     </Form>
+    </div>
   );
 }
 

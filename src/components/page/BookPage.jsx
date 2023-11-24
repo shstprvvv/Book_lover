@@ -33,8 +33,17 @@ export default function BookPage({ oneBook, comments, user }) {
     }
   };
 
+
+  const style = {
+    backgroundImage:
+      "url('https://img1.akspic.ru/crops/5/9/9/2/4/142995/142995-minimalizm-cvet-purpur-rozovyj-artist-3840x2160.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '700px',
+  };
+
   return (
-    <div className="row g-0">
+    <div className="row g-0" style={style}>
       <div className="col-md-4">
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
 
