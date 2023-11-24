@@ -38,13 +38,16 @@ function AddBook() {
   };
 
 
+
   const formContainerStyle = {
     background: '#D8BFD8',
+
     borderRadius: '8px',
     padding: '20px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     width: '300px',
     margin: 'auto',
+
     // marginTop: '10vh',
   };
 
@@ -60,6 +63,7 @@ function AddBook() {
   return (
     <div style={style}>
     <Form onSubmit={handleSubmit} style={formContainerStyle}>
+
       <Form.Group controlId="formNameBook">
         <Form.Label>Введите название книги</Form.Label>
         <Form.Control

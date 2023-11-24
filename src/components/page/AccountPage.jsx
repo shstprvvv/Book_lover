@@ -38,6 +38,7 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
   };
 
   return (
+
     <div style={style}>
       <div><Button variant="light" size="lg">Список ваших книг</Button></div>
       <div className="row">
@@ -55,6 +56,7 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
         {show &&<ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />}
       </div>
       <div><Button variant="light" size="lg">Ваши любимые книги</Button></div>
+
       <div className="row">
         {newBooks.map((book) => (
           <FormMainPage
@@ -66,8 +68,6 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
           />
         ))}
       </div>
-     
-    </>
 
       </div>
     </div>
