@@ -1,7 +1,6 @@
 import express from 'express';
 import { Book, Favorites_book, Comment, Rating } from '../../db/models';
 
-
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -32,12 +31,21 @@ router.post('/addbook', async (req, res) => {
 });
 
 router.post('/adRating', async (req, res) => {
-  const response = req.body
-  console.log('====>>>', response);
-  await Rating.create(response);
+  try {
+    const { user, rating, oneBook } = req.body;
 
+    const data = {
+      user_id: user.id,
+      book_id: oneBook.id,
+      book_raitng: rating,
+    };
+    console.log(data);
+    await Rating.create(data);
+  } catch (error) {
+    console.log('Error adding book to favourites:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
-
 
 router.post('/add-to-favorites', async (req, res) => {
   req.body.user_id = res.locals.user.id;
@@ -78,7 +86,6 @@ router.post('/addcomment', async (req, res) => {
 //     console.log(error);
 //   }
 // });
-
 
 router.delete('/book/:id', async (req, res) => {
   try {

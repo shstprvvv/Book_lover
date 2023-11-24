@@ -32,7 +32,7 @@ export default function App({
         />
         <Route path="/addbook" element={<AddBook />} />
 
-        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} />} />
+        <Route path="/bookpage/:id" element={<BookPage oneBook={oneBook} comments={comments} user={user} />} />
 
       </Routes>
     </div>

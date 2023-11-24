@@ -5,8 +5,7 @@ import CommentCard from '../../ui/CommentCard';
 import Rating from '../../ui/Rating';
 import BookRatingForm from '../../ui/BookRatingForm';
 
-export default function BookPage({ oneBook, comments }) {
-  console.log('-->', oneBook);
+export default function BookPage({ oneBook, comments, user }) {
   const sum = oneBook.Ratings.reduce((accumulator, Rating) => accumulator + Rating.book_raitng, 0);
   const averageRating = sum / oneBook.Ratings.length;
 
@@ -40,7 +39,7 @@ export default function BookPage({ oneBook, comments }) {
         <img src={oneBook.img} alt={`${oneBook.nameBook} cover`} />
 
         <div>
-          <BookRatingForm />
+          <BookRatingForm user={user} oneBook={oneBook} />
         </div>
 
       </div>
