@@ -69,11 +69,19 @@ export default function LoginPage() {
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     width: '300px',
     margin: 'auto',
-    marginTop: '10vh',
+    // marginTop: '10vh',
+  };
+
+  const style = {
+    backgroundImage:
+      "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '700px',
   };
 
   return (
-    <div>
+    <div style={style}>
       <div style={formContainerStyle}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

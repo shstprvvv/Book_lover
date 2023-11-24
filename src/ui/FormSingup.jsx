@@ -26,7 +26,7 @@ export default function FormSingup() {
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     width: '300px',
     margin: 'auto',
-    marginTop: '10vh',
+    // marginTop: '10vh',
   };
 
   const style = {
@@ -34,7 +34,7 @@ export default function FormSingup() {
       "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '650px',
+    height: '700px',
   };
 
   return (

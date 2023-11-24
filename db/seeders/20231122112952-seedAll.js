@@ -123,6 +123,20 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          user_comment: 'Хорошая книга',
+          user_id: 1,
+          book_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_comment: 'Супер, много эмоций получил от чтения',
+          user_id: 1,
+          book_id: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {},
     );
