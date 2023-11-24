@@ -29,21 +29,30 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
 
   return (
     <>
-      <div>Список ваших книг</div>
-      <div className="row">
-        {userBooks.map((book) => (
-          <FormMainPage
-            key={book.id}
-            book={book}
-            setModalContent={setModalContent}
-            handleShow={handleShow}
-            deleteHandler={deleteHandler}
-          />
-        ))}
-      </div>
-      <div className="col-12">
-        <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
-      </div>
+      {userBooks && (
+        <>
+          <div>Список ваших книг</div>
+          <div className="row">
+            {userBooks.map((book) => (
+              <FormMainPage
+                key={book.id}
+                book={book}
+                setModalContent={setModalContent}
+                handleShow={handleShow}
+                deleteHandler={deleteHandler}
+              />
+            ))}
+          </div>
+          <div className="col-12">
+            <ModalWindow
+              {...modalContent}
+              setShow={setShow}
+              handleClose={handleClose}
+              show={show}
+            />
+          </div>
+        </>
+      )}
       <div>Ваши любимые книги</div>
       <div className="row">
         {newBooks.map((book) => (
@@ -55,9 +64,6 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
             deleteHandler={deleteHandler}
           />
         ))}
-      </div>
-      <div className="col-12">
-        <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
       </div>
     </>
   );

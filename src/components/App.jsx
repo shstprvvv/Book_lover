@@ -21,6 +21,7 @@ export default function App({
   };
 
   return (
+    <>
       <Header user={user} />
       <Routes>
         <Route path="/" element={<MainPage books={books} user={user} />} />
