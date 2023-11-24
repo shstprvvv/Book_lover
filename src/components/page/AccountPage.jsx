@@ -52,7 +52,7 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
         ))}
       </div>
       <div className="col-12">
-        <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
+        {show &&<ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />}
       </div>
       <div><Button variant="light" size="lg">Ваши любимые книги</Button></div>
       <div className="row">
@@ -66,9 +66,11 @@ export default function AccountPage({ favouriteBooks, userBooks }) {
           />
         ))}
       </div>
-      <div className="col-12">
-        <ModalWindow {...modalContent} setShow={setShow} handleClose={handleClose} show={show} />
+     
+    </>
+
       </div>
     </div>
+
   );
 }
