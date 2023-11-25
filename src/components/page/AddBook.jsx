@@ -57,7 +57,7 @@ function AddBook() {
       "url('https://img1.akspic.ru/crops/4/0/0/5/5/155004/155004-minimalizm-ekoregion-fioletovyj-art-purpurnyj_cvet-3840x2160.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '700px',
+    height: '800px',
   };
 
   return (

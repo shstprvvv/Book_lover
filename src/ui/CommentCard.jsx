@@ -7,9 +7,6 @@ export default function CommentCard({ oneComment }) {
       <Card.Body>
         <Card.Text>{oneComment.User.name}</Card.Text>
         <Card.Title>{oneComment.user_comment}</Card.Title>
-        <Button variant="danger">
-          Remove
-        </Button>
       </Card.Body>
     </Card>
   );

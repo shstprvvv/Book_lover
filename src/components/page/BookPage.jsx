@@ -26,7 +26,9 @@ export default function BookPage({ oneBook, comments, user }) {
       formDataToSend.user_comment = comment;
       formDataToSend.book_id = oneBook.id;
       await axios.post('/api/addcomment', formDataToSend);
-      setComment('');
+      setComment('')
+
+      window.location.href = `/bookpage/${oneBook.id}`;
     } catch (error) {
       // Handle errors
       console.error('Error adding comment:', error.message);
@@ -39,7 +41,7 @@ export default function BookPage({ oneBook, comments, user }) {
       "url('https://img1.akspic.ru/crops/5/9/9/2/4/142995/142995-minimalizm-cvet-purpur-rozovyj-artist-3840x2160.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '700px',
+    height: '2000px',
   };
 
   return (

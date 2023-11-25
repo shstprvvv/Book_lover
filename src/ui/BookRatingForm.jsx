@@ -12,7 +12,6 @@ function BookRatingForm({ user, oneBook }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Добавьте код для обработки отправки формы с рейтингом
-    console.log('Submitted Rating:', rating);
     await axios.post('/api/adRating', { rating, user, oneBook });
   };
 

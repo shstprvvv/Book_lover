@@ -77,7 +77,7 @@ export default function LoginPage() {
       "url('https://images.wallpaperscraft.ru/image/single/gradient_abstraktsiia_fon_310094_1024x768.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '700px',
+    height: '2000px',
   };
 
   return (
