@@ -39,7 +39,7 @@ function FormMainPage({
         {/* <Card.Text>{`IMDB: ${}`}</Card.Text> */}
 
         <Button variant="outline-danger" onClick={() => deleteHandler(book.id)}>Удалить</Button>
-        <div className="mt-1" onClick={handleShow}><Button variant="outline-secondary">Редактировать</Button></div>
+        {/* <div className="mt-1" onClick={handleShow}><Button variant="outline-secondary">Редактировать</Button></div> */}
 
         <div className="mt-1"><Button variant="outline-warning" onClick={() => redirectId(book.id)}>Смотреть полную информацию</Button></div>
         <div className="mt-1"><Button onClick={addToFavorites} variant="outline-info">Избранное</Button></div>

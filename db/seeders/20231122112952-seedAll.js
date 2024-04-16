@@ -7,7 +7,7 @@ module.exports = {
         {
           name: 'admin',
           email: 'admin@1',
-          hashpass: '123',
+          hashpass: '1',
           phone: '123',
           createdAt: new Date(),
           updatedAt: new Date(),
